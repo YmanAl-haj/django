@@ -1,0 +1,77 @@
+{%extends 'base/base.html'%}
+{% load static %}
+
+{%block menu%}
+    <li class="active"><a href="index">Home</a></li>
+    <li><a href="brand">Brands</a></li>
+    <li><a href="product">Products</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+{%endblock%}
+
+{%block slider_section%}
+
+    <section class="slider_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="full">
+                        <h1><strong class="cur">Best</strong><br>For Cosmetic products</h1>
+                            <p>Cosmetic Boutique</p>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="full text_align_center">
+                        <img class="slide_img" src="{% static 'makeup/images/slider_img.jpg' %}" alt="#" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section -->
+{%endblock%}
+
+{%block section%}
+
+<!-- section -->
+    <div id="fruits" class="section dark_bg layout_padding left_white">
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                    <div class="heading full text_align_center">
+                        <h2 class="white_font full text_align_center">Our Products</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4 margin_top_30">
+                    <div class="full fr">
+                        <img class="img-responsive" src="{% static 'makeup/images/f1.png' %}" alt="#" />
+                    </div>
+                    <div class="full text_align_center">
+                        <h3 class="white_font">Density Makeup<br><strong class="theme_blue">Makeup Brand</strong></h3>
+                    </div>
+                </div>
+                <div class="col-md-4 margin_top_30">
+                    <div class="full fr">
+                        <img class="img-responsive" src="{% static 'makeup/images/f2.png'%}" alt="#" />
+                    </div>
+                    <div class="full text_align_center">
+                        <h3 class="white_font">Kids Toy<br><strong class="theme_blue">Makeup Brand</strong></h3>
+                    </div>
+                </div>
+                <div class="col-md-4 margin_top_30">
+                    <div class="full fr">
+                        <img class="img-responsive" src="{% static 'makeup/images/f3.png' %}" alt="#" />
+                    </div>
+                    <div class="full text_align_center">
+                        <h3 class="white_font">Burshes Makeup<br><strong class="theme_blue">Makeup Brand</strong></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+{%endblock%}
+

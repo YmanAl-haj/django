@@ -1,0 +1,40 @@
+{%extends 'base/base.html'%}
+{% load static %}
+
+{%block menu%}
+    <li ><a href="index">Home</a></li>
+    <li ><a href="brand">Brands</a></li>
+    <li class="active"><a href="product">Products</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+{%endblock%}
+
+{%block section%}
+<!-- section -->
+    <div id="blog" class="section dark_bg layout_padding right_white">
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                    <div class="heading full text_align_center">
+                        <h2 class="white_font full text_align_center">Our Brands</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4 margin_top_30">
+                    <div class="full fr" style="overflow: hidden;">
+                    <div class="full bl ">
+                        <img class="img-responsive" src="{% static 'makeup/images/f1.png' %}" alt="#" />
+                    </div>
+                    <div class="full blog_blue text_align_center">
+                        <h5 class="white_font">Country</h3>
+                        <p>Name of Brand</p>
+                    </div>
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+{%endblock%}
