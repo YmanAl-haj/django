@@ -127,7 +127,7 @@ p {
 .img-responsive {
      max-width: 100%;
      height: auto;
-} 
+}
 .fr:hover{
     box-shadow: 10px 10px 5px #7a808e;
     cursor: pointer;

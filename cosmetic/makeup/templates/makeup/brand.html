@@ -2,10 +2,10 @@
 {% load static %}
 
 {%block menu%}
-    <li ><a href="index">Home</a></li>
-    <li class="active"><a href="brand">Brands</a></li>
-    <li><a href="product">Products</a></li>
-    <li><a href="#">Services</a></li>
+     <li ><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'brand' %}">Brands</a></li>
+    <li ><a href="{% url 'product' %}">Products</a></li>
+    <li><a href="#">About</a></li>
     <li><a href="#contact">Contact</a></li>
 {%endblock%}
 
@@ -22,17 +22,22 @@
                 </div>
             </div>
             <div class="row">
+               {% for i in brand %}
                <div class="col-md-4 margin_top_30">
-                    <div class="full" style="overflow: hidden;">
-                    <div class="full bl">
-                        <img class="img-responsive" src="{% static 'makeup/images/b.png' %}" alt="#" />
-                    </div>
-                    <div class="full blog_blue text_align_center">
-                        <h5 class="white_font">Country</h3>
-                        <p>Name of Brand</p>
-                    </div> 
-                     </div>  
-                </div>
+                   <a href="{% url 'branddetails' i.name %}">
+                        <div class="full" style="overflow: hidden;">
+                        <div class="full bl">
+                            <img class="img-responsive" src="{% static 'makeup/images/b.png' %}" alt="#" />
+                        </div>
+                        <div class="full blog_blue text_align_center">
+
+                            <h3 class="white_font">{{i.name|title}}</h3>
+                            <p>{{i.origin|title}}</p>
+
+                        </div>
+               </div>
+            </div>
+                {%endfor %}
 
             </div>
         </div>

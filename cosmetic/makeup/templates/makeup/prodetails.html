@@ -1,0 +1,40 @@
+{%extends 'base/base.html'%}
+{% load static %}
+
+{%block menu%}
+    <li ><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'brand' %}">Brands</a></li>
+    <li class="active"><a href="{% url 'product' %}">Products</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+{%endblock%}
+
+{%block section%}
+<!-- section -->
+    <div class="section layout_padding">
+        <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                    <div class="full main_heading_1">
+                        <h2>{{productd.name}}</h2>
+                        <p>{{productd.description}} </p>
+                        <br>
+                        <p style="font-weight: bold;">Price: <span>${{productd.price}}</span></p>
+                    </div>
+                    <div class="full margin_top_30">
+                        <a class="main_bt" href="#">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 margin_top_30 padding_right_0">
+                    <div class="full">
+                        <img src="{{productd.image.url}}" alt="#" style=" width: 80%; margin: auto; display: block;" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+{%endblock%}
+
+

@@ -8,10 +8,10 @@ class Brand(models.Model):
         this tag in brand model test
         """
     name = models.CharField(max_length=30)
-    origin = models.TextField()
+    origin = models.CharField(max_length=30)
 
     def __str__(self):
-        return "Name is: {} \n Origin is: {}".format(self.name, self.orgin)
+        return "Name: {} \n Origin: {}".format(self.name, self.origin)
 
     def get_absolute_url(self):
         pass
@@ -24,10 +24,11 @@ class Products(models.Model):
     pub_date = models.DateField('expire date')
     price=models.IntegerField()
     brand=models.ForeignKey(Brand,on_delete=models.CASCADE)
+    image=models.ImageField(upload_to="images")
 
 
     def __str__(self):
-        return "Name is: {}\n Kind is: {}\n Price is: {}\n Brand is: {}".format(self.name, self.kind,self.price,self.brand)
+        return "Name: {}\n Kind: {}\n Price: {}\n Brand: {}".format(self.name, self.kind,self.price,self.brand)
 
     def get_absolute_url(self):
         pass

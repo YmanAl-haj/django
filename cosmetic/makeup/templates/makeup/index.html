@@ -2,10 +2,10 @@
 {% load static %}
 
 {%block menu%}
-    <li class="active"><a href="index">Home</a></li>
-    <li><a href="brand">Brands</a></li>
-    <li><a href="product">Products</a></li>
-    <li><a href="#">Services</a></li>
+    <li class="active"><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'brand' %}">Brands</a></li>
+    <li><a href="{% url 'product' %}">Products</a></li>
+    <li><a href="#">About</a></li>
     <li><a href="#contact">Contact</a></li>
 {%endblock%}
 
@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="full">
-                        <h1><strong class="cur">Best</strong><br>For Cosmetic products</h1>
-                            <p>Cosmetic Boutique</p>
+                        <h1 style="font-size: 39px;"><strong class="cur">Best</strong><br>For Cosmetic Boutique</h1>
+                            <p> The best makeup brands natural, effective ingredients with nourishing vitamins and oils in skin care. </p>
 
                     </div>
                 </div>
@@ -40,38 +40,30 @@
             <div class="row">
                <div class="col-md-12">
                     <div class="heading full text_align_center">
-                        <h2 class="white_font full text_align_center">Our Products</h2>
+                        <h2 class="white_font full text_align_center">Our Brands</h2>
                     </div>
                 </div>
             </div>
+
             <div class="row">
+                {% for i in brandi %}
                <div class="col-md-4 margin_top_30">
-                    <div class="full fr">
-                        <img class="img-responsive" src="{% static 'makeup/images/f1.png' %}" alt="#" />
-                    </div>
-                    <div class="full text_align_center">
-                        <h3 class="white_font">Density Makeup<br><strong class="theme_blue">Makeup Brand</strong></h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margin_top_30">
-                    <div class="full fr">
-                        <img class="img-responsive" src="{% static 'makeup/images/f2.png'%}" alt="#" />
-                    </div>
-                    <div class="full text_align_center">
-                        <h3 class="white_font">Kids Toy<br><strong class="theme_blue">Makeup Brand</strong></h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margin_top_30">
-                    <div class="full fr">
-                        <img class="img-responsive" src="{% static 'makeup/images/f3.png' %}" alt="#" />
-                    </div>
-                    <div class="full text_align_center">
-                        <h3 class="white_font">Burshes Makeup<br><strong class="theme_blue">Makeup Brand</strong></h3>
-                    </div>
-                </div>
+                   <div class="full" style="overflow: hidden;">
+                        <div class="full bl">
+                            <img class="img-responsive" src="" alt="#" />
+                        </div>
+                        <div class="full blog_blue text_align_center">
+                            <h3 class="white_font">{{i.name |title}}</h3>
+                            <p>({{i.num_products}})</p>
+
+                        </div>
+                   </div>
+               </div>
+                {%endfor%}
             </div>
         </div>
+     </div>
     </div>
-    <!-- end section -->
+<!-- end section -->
 {%endblock%}
 

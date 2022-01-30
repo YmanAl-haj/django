@@ -9,6 +9,7 @@
     <li><a href="#contact">Contact</a></li>
 {%endblock%}
 
+
 {%block section%}
 <!-- section -->
     <div id="blog" class="section dark_bg layout_padding right_white">
@@ -16,29 +17,28 @@
             <div class="row">
                <div class="col-md-12">
                     <div class="heading full text_align_center">
-                        <h2 class="white_font full text_align_center">Our Brands</h2>
+                        {% for t in brandd|slice:":1" %}
+                        <h2 class="white_font full text_align_center">Products of {{t.brand.name|title}} </h2>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
 
             <div class="row">
-               {% for i in product%}
-
+                {% for i in brandd %}
                    <div class="col-md-4 margin_top_30">
-                       <a href="{%url 'prodetails' i.id %}">
                             <div class="full fr" style="overflow: hidden;">
                             <div class="full bl ">
                                 <img class="img-responsive" src="{{i.image.url}}" alt="#" />
                             </div>
                             <div class="full blog_blue text_align_center">
-                                <h3 class="white_font">{{i.name|title}}</h3>
-                                <p>${{i.price}}</p>
+                                <h3 class="white_font"> {{i.name|title}}</h3>
+                                <p>{{i.kind|title}}</p>
                             </div>
                            </div>
-                         </a>
                     </div>
 
-               {%endfor%}
+                {%endfor%}
             </div>
 
         </div>
