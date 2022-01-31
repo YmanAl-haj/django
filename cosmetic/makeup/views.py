@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from .models import Brand,Products
+from .models import Brand,Products,Order
 from django.db.models import Count
+from django.http import JsonResponse
+import json
 # Create your views here.
 
 def index(request):
@@ -74,3 +76,35 @@ def branddetails(request,name):
 
     template_name = 'makeup/branddetails.html'
     return render(request,template_name,context)
+
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    customer ='temp'
+    if action=='add':
+        product = Products.objects.get(id=productId)
+        orderItem = Order.objects.create(name=customer, product_id=product)
+        orderItem.save()
+    elif action=='remove':
+        orderItem = Order.objects.get(id=productId)
+        orderItem.delete()
+
+    return JsonResponse('Item was added',safe=False)
+
+
+
+def cart(request):
+    """
+          this is Cart page
+    """
+    context = {}
+    try:
+        order = Order.objects.all()
+        context['order'] = order
+    except Order.DoesNotExist:
+        context['error'] = 'Not Found'
+    template_name = 'makeup/cart.html'
+    return render(request, template_name,context)
