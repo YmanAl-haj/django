@@ -5,7 +5,7 @@
     <li ><a href="{% url 'index' %}">Home</a></li>
     <li><a href="{% url 'brand' %}">Brands</a></li>
     <li class="active"><a href="{% url 'product' %}">Products</a></li>
-    <li><a href="#">About</a></li>
+    <li><a href="{% url 'cart' %}">Cart</a></li>
     <li><a href="#contact">Contact</a></li>
 {%endblock%}
 
@@ -36,6 +36,9 @@
                             </div>
                            </div>
                          </a>
+                       <div class="full margin_top_30">
+                           <button data-product={{i.id}} data-action="add" class="main_bt updated-cart" style="color:#fff;">Add to Cart</button>
+                       </div>
                     </div>
 
                {%endfor%}
