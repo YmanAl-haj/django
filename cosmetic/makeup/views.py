@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from .models import Brand,Products,Order
-from django.db.models import Count
+from django.shortcuts import render,redirect
+from .models import *
+from django.db.models import Count, Sum
 from django.http import JsonResponse
 import json
+from .form import UserInfoForm
+from django.contrib.auth.models import User
 # Create your views here.
 
 def index(request):
@@ -84,15 +86,18 @@ def updateItem(request):
     action = data['action']
 
     customer ='temp'
+    print(action,productId)
     if action=='add':
         product = Products.objects.get(id=productId)
-        orderItem = Order.objects.create(name=customer, product_id=product)
+        orderItem = Order.objects.create(product_id=product)
         orderItem.save()
-    elif action=='remove':
-        orderItem = Order.objects.get(id=productId)
+    elif action=="remove":
+
+        orderItem = Order.objects.filter(product_id=productId)
         orderItem.delete()
 
-    return JsonResponse('Item was added',safe=False)
+
+    return JsonResponse('cart',safe=False)
 
 
 
@@ -103,7 +108,25 @@ def cart(request):
     context = {}
     try:
         order = Order.objects.all()
+        context['form'] = UserInfoForm()
+        if request.method == 'POST':
+            form = UserInfoForm(request.POST)
+            if form.is_valid():
+                Customer.objects.create(
+                    name=form.cleaned_data['name'],
+                    # order=order,
+                    email=form.cleaned_data['email']
+                )
+                cus=Customer.objects.get(name=form.cleaned_data['name'])
+
+                order.update(customer=cus)
+
+        count = Order.objects.all().count
+        # total_prices = order.values('product_id').annotate(Sum('product_id.price'))
         context['order'] = order
+        context['count'] = count
+        # context['total_prices'] = total_prices
+
     except Order.DoesNotExist:
         context['error'] = 'Not Found'
     template_name = 'makeup/cart.html'
